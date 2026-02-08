@@ -1,12 +1,13 @@
 services:
   phpmyadmin:
     image: phpmyadmin:latest
+    container_name: phpMyAdmin
     environment:
       PMA_HOST: '${MYSQL_HOST}'
       MYSQL_ROOT_PASSWORD: '${MYSQL_PASSWORD}'
     volumes:
       - ./.docker/phpmyadmin/sessions:/var/lib/phpmyadmin/sessions
-      - ./.docker/phpmyadmin/temp:/var/lib/phpmyadmin/tmp
+      - ./.docker/phpmyadmin/tmp:/var/lib/phpmyadmin/tmp
       - ./.docker/phpmyadmin/php.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
       - ./.docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:ro
     labels:
